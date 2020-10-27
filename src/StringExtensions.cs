@@ -24,20 +24,14 @@ namespace Cook.DotnetExtensions
             return new string((input ?? "").Skip(start).Take(stop).ToArray());
         }
 
-        public static XDocument? AsXDoc(this string input)
+        public static bool IsNullOrWhiteSpace(this string input)
         {
-            if(string.IsNullOrWhiteSpace(input))
-            {
-                throw new ArgumentNullException("Input must be valid xml in string form");
-            }
-            try
-            {
-                return XDocument.Parse(input);
-            }
-            catch(System.Xml.XmlException)
-            {
-                throw new ArgumentException("Input must be valid xml in string form");
-            }
+            return String.IsNullOrWhiteSpace(input);
+        }
+
+        public static bool IsNullOrEmpty(this string input)
+        {
+            return String.IsNullOrEmpty(input);
         }
     }
 }
